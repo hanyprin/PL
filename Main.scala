@@ -33,7 +33,7 @@ object Main {
   /**
    * Exercise 3
    */
-
+/*
   def countChange(money: Int, coins: List[Int]): Int = {
     if (coins.isEmpty) 0
     else if (money == 0) 0
@@ -50,5 +50,14 @@ object Main {
     else if (money > left.head && left.head >= prev) countChangeRecord(money - left.head, left.head, coins) + countChangeIter(money, left.tail, prev, coins)
     else if (money == left.head && left.head >= prev) 1 + countChangeIter(money, left.tail, prev, coins)
     else countChangeIter(money, left.tail, prev, coins)
+  } 
+  */
+  
+   def countChange(money: Int, coins: List[Int]): Int = {
+    if (coins.isEmpty) 0
+    else if (money == 0) 0
+    else if (money>coins.head) countChange(money-coins.head,coins)+countChange(money,coins.tail)
+    else if (money==coins.head) 1+countChange(money,coins.tail)
+    else countChange(money,coins.tail)
   }
 }
